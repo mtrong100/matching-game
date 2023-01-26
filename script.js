@@ -1,7 +1,7 @@
 const cardsArray = [
   {
-    name: "fire",
-    img: "img/fire.png",
+    name: "grapes",
+    img: "img/grapes.png",
   },
   {
     name: "crab",
@@ -16,20 +16,20 @@ const cardsArray = [
     img: "img/fin.png",
   },
   {
-    name: "youtube",
-    img: "img/youtube.png",
+    name: "hat",
+    img: "img/hat.png",
   },
   {
-    name: "ufo",
-    img: "img/ufo.png",
+    name: "monster",
+    img: "img/monster.png",
   },
   {
-    name: "plant",
-    img: "img/plant.png",
+    name: "gun",
+    img: "img/gun.png",
   },
   {
-    name: "burger",
-    img: "img/burger.png",
+    name: "ball",
+    img: "img/ball.png",
   },
 ];
 
