@@ -39,7 +39,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .card {
   margin: 5px;
@@ -73,14 +73,16 @@ body {
   -webkit-backface-visibility: hidden;
 }
 .front {
-  background: #fab942 url("./img/box.png") no-repeat center center / contain;
+  background: url("./img/box2.png") no-repeat center center / contain;
   border-radius: 10px;
 }
 .back {
   transform: rotateY(180deg);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  /* background-position: top center; */
+  background-position: 50% 20%;
+  border-radius: 5px;
 }
 .selected {
   transform: rotateY(180deg);
@@ -118,28 +120,6 @@ body {
   z-index: 10;
   padding: 20px;
 }
-.modal-close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100rem;
-  color: white;
-  background-color: #eee;
-  padding: 5px;
-  transform: translate(50%, -50%);
-}
-.modal-close:hover {
-  background-color: red;
-}
-.modal-close .close-icon {
-  color: black;
-}
 .modal-main {
   overscroll-behavior-y: contain;
   display: flex;
@@ -165,22 +145,33 @@ body {
 /* RESPONSIVE */
 @media screen and (max-width: 768px) {
   .grid {
-    max-width: 500px;
+    max-width: 700px;
   }
   .card,
   .back,
   .front {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+  }
+}
+@media screen and (max-width: 680px) {
+  .grid {
+    max-width: 600px;
+  }
+  .card,
+  .back,
+  .front {
+    width: 120px;
+    height: 120px;
   }
 }
 @media screen and (max-width: 500px) {
   .grid,
   .modal-content {
-    max-width: 350px;
+    max-width: 400px;
   }
-  .modal-main h1, {
-    font-size: 18px;
+  .modal-main h1 {
+    font-size: 25px;
   }
   .game-title {
     font-size: 25px;
@@ -188,7 +179,25 @@ body {
   .card,
   .back,
   .front {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .grid,
+  .modal-content {
+    max-width: 400px;
+  }
+  .modal-main h1 {
+    font-size: 18px;
+  }
+  .game-title {
+    font-size: 20px;
+  }
+  .card,
+  .back,
+  .front {
+    width: 60px;
+    height: 60px;
   }
 }
