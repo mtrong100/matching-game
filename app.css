@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap");
 *,
 *:before,
 *:after {
@@ -24,6 +25,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Open Sans";
+  gap: 10px;
+  flex-direction: column;
+}
+.game-title {
+  font-size: 40px;
+  font-weight: 600;
+  color: #fff;
 }
 .grid {
   max-width: 660px;
@@ -38,8 +47,6 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  width: 150px;
-  height: 150px;
 }
 .card.matched {
   border: 0;
@@ -81,16 +88,106 @@ body {
 .matched .front {
   background: #645cbb !important;
 }
-
+/*  MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display:  none;
+  justify-content: center;
+  align-items: center;
+}
+.modal.hide {
+  display: none;
+}
+.modal.show {
+  display: flex;
+}
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.modal-content {
+  background-color: #AAE3E2;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+}
+.modal-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100rem;
+  color: white;
+  background-color: #eee;
+  padding: 5px;
+  transform: translate(50%, -50%);
+}
+.modal-close:hover {
+  background-color: red;
+}
+.modal-close .close-icon {
+  color: black;
+}
+.modal-main {
+  overscroll-behavior-y: contain;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.modal-main h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+.modal-main .reset {
+  border: none;
+  outline: none;
+  background-color: #FF8B13;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #333;
+  border-radius: 5px;
+}
 /* RESPONSIVE */
 @media screen and (max-width: 768px) {
-  .card {
+  .grid {
+    max-width: 500px;
+  }
+  .card,
+  .back,
+  .front {
     width: 100px;
     height: 100px;
   }
 }
-@media screen and (max-width: 480px) {
-  .card {
+@media screen and (max-width: 500px) {
+  .grid,
+  .modal-content {
+    max-width: 350px;
+  }
+  .modal-main h1, {
+    font-size: 18px;
+  }
+  .game-title {
+    font-size: 25px;
+  }
+  .card,
+  .back,
+  .front {
     width: 70px;
     height: 70px;
   }

@@ -1,68 +1,75 @@
 const cardsArray = [
   {
-    name: "grapes",
-    img: "img/grapes.png",
+    name: "1",
+    img: "img/1.jpg",
   },
   {
-    name: "crab",
-    img: "img/crab.png",
+    name: "2",
+    img: "img/2.jpg",
   },
   {
-    name: "creeper",
-    img: "img/creeper.png",
+    name: "3",
+    img: "img/3.jpg",
   },
   {
-    name: "fin",
-    img: "img/fin.png",
+    name: "4",
+    img: "img/4.png",
   },
   {
-    name: "hat",
-    img: "img/hat.png",
+    name: "5",
+    img: "img/5.png",
   },
   {
-    name: "monster",
-    img: "img/monster.png",
+    name: "6",
+    img: "img/6.jpg",
   },
   {
-    name: "gun",
-    img: "img/gun.png",
+    name: "7",
+    img: "img/7.jpg",
   },
   {
-    name: "ball",
-    img: "img/ball.png",
+    name: "8",
+    img: "img/8.png",
   },
 ];
 
 /* MAIN JS HERE */
 // hàm random array
 // Array.sort(() => 0.5 - Math.random());
-const grid = document.querySelector(".grid");
 let count = 0;
 let prevCard;
 let firstGuess = "";
 let secondGuess = "";
-const delay = 1000;
+const delay = 600;
+const closeIcon = document.querySelector(".close-icon");
+const modal = document.querySelector(".modal");
+const resetBtn = document.querySelector(".reset");
+const grid = document.querySelector(".grid");
 // gộp 2 mảng lại: sữ dụng concat
-const cardsArrayMerge = cardsArray
-  .concat(cardsArray)
-  .sort(() => 0.5 - Math.random());
+function generateCards() {
+  grid.innerHTML = "";
+  const cardsArrayMerge = cardsArray
+    .concat(cardsArray)
+    .sort(() => 0.5 - Math.random());
 
-cardsArrayMerge.forEach((item) => {
-  const card = document.createElement("div");
-  card.classList.add("card");
-  card.dataset.name = item.name;
+  cardsArrayMerge.forEach((item) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.dataset.name = item.name;
 
-  const front = document.createElement("div");
-  front.classList.add("front");
-  const back = document.createElement("div");
-  back.classList.add("back");
+    const front = document.createElement("div");
+    front.classList.add("front");
+    const back = document.createElement("div");
+    back.classList.add("back");
 
-  back.style.backgroundImage = `url(${item.img})`;
-  /* hiện item ra bên ngoài */
-  card.appendChild(front);
-  card.appendChild(back);
-  grid.appendChild(card);
-});
+    back.style.backgroundImage = `url(${item.img})`;
+    /* hiện item ra bên ngoài */
+    card.appendChild(front);
+    card.appendChild(back);
+    grid.appendChild(card);
+  });
+}
+generateCards();
 
 function matchCards() {
   const selectedCard = document.querySelectorAll(".selected");
@@ -75,7 +82,22 @@ function resetCards() {
   secondGuess = "";
   prevCard = null;
   const selectedCard = document.querySelectorAll(".selected");
+  const matchedAll = document.querySelectorAll(".matched");
+  const cardLength = document.querySelectorAll(".card").length;
   [...selectedCard].forEach((item) => item.classList.remove("selected"));
+  // khi done game sẽ generate lại từ đầu
+  if (matchedAll.length === cardLength) {
+    modal.classList.add("show");
+    resetBtn.addEventListener("click", resetGame);
+    function resetGame() {
+      setTimeout(
+        matchedAll.forEach((el) => el.classList.remove("matched")),
+        delay
+      );
+      setTimeout(generateCards, delay);
+      modal.classList.remove("show");
+    }
+  }
 }
 
 grid.addEventListener("click", function (e) {
@@ -107,4 +129,8 @@ grid.addEventListener("click", function (e) {
     }
     prevCard = clicked;
   }
+});
+
+closeIcon.addEventListener("click", function () {
+  modal.classList.add("hide");
 });

@@ -4,13 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="https://retrogamescrafts.com/media/cropped-favicon-2.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./app.css">
-    <title>Matching game</title>
+    <link
+      rel="icon"
+      href="https://retrogamescrafts.com/media/cropped-favicon-2.png"
+      type="image/x-icon"
+    />
+    <script
+      src="https://kit.fontawesome.com/5f219ec053.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./app.css" />
+    <title>Truy tìm quỷ seg</title>
   </head>
   <body>
+    <h1 class="game-title">GAME TRUY TÌM QUỶ SÉC</h1>
     <div id="game">
       <section class="grid"></section>
+    </div>
+
+    <!-- modal end game -->
+    <div class="modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <span class="modal-close">
+          <i class="fa-solid fa-xmark close-icon"></i>
+        </span>
+        <div class="modal-main">
+          <h1>CON QUỶ SÉC CHÍNH LÀ BẠN</h1>
+          <div class="img-end">
+            <img src="./img/bulul.jpg" alt="">
+          </div>
+          <button class="reset">Reset game</button>
+        </div>
+      </div>
     </div>
     <script src="./script.js"></script>
   </body>
